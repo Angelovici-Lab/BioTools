@@ -35,5 +35,5 @@ This is a basic example which shows you how to use Hclust script:
 
 ``` r
 cd /path/to/BioTools/scripts
-Rscript Hclust.R -i ../data/Hclust.csv -o ../output/07_30_2020
+Rscript Hclust.R -i ../data/Hclust.csv -o ../output/07302020
 ```
