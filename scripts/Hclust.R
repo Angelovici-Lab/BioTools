@@ -3,11 +3,13 @@
 #######################################################################
 ## Load packages
 #######################################################################
+rm(list = ls())
 
 library(jpeg)
-library(tidyverse)
 library(dplyr)
+library(tidyr)
 library(tibble)
+library(stringr)
 library(purrr)
 library(tidyselect)
 library(scales)
@@ -117,7 +119,7 @@ trans_cts_cluster <- as.data.frame(scaledata) %>%
 cat("\n Scaled data and cluster value: \n")
 print(head(trans_cts_cluster))
 
-write.csv(trans_cts_cluster, file.path(output, "trans_cts_cluster.csv"))
+write.csv(trans_cts_cluster, file.path(output, "trans_cts_cluster.csv"), row.names=FALSE)
 
 trans_cts_cluster_longer <- as.data.frame(scaledata) %>%
   rownames_to_column(var = colnames(df)[1]) %>%
@@ -139,8 +141,7 @@ trans_cts_cluster_longer$key <- factor(
 p <- trans_cts_cluster_longer %>%
   ggplot(aes(key,val)) +
   geom_line(aes(group = Gene))+
-  geom_line(stat = "summary", fun.y = "mean", colour = "brown", size = 1.5,
-            aes(group = 1)) +
+  geom_line(stat = "summary", fun.y = "mean", colour = "brown", size = 1.5, aes(group = 1)) +
   facet_wrap( facets = 'value')
 
 cat("\n Save image... \n")
