@@ -20,6 +20,9 @@ library(reshape2)
 library(ggforce)
 library(ComplexHeatmap)
 
+set.seed(1)
+
+
 #######################################################################
 ## Argument Parser
 #######################################################################
@@ -45,13 +48,6 @@ if(!dir.exists(output)){
   dir.create(output, recursive = TRUE)
 }
 
-
-#input <- "../data/Hclust.txt"
-#output <- "./"
-#k <- 5
-
-set.seed(1)
-
 ## Load data
 if(endsWith(input, "csv")){
   df <- read.csv(file = input, header = TRUE)
@@ -64,6 +60,11 @@ if(endsWith(input, "csv")){
 
 cat("\n Raw data: \n")
 print(head(df))
+
+
+#######################################################################
+## Hclust code starts here
+#######################################################################
 
 ## making the first col as row.names (convert data to martix)
 r_names <- df[,1]
