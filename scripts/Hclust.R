@@ -28,7 +28,7 @@ parser <- argparse::ArgumentParser()
 
 parser$add_argument("-i", type="character", help="Input file path", required=TRUE)
 parser$add_argument("-o", type="character", help="Output folder path", required=TRUE)
-parser$add_argument("-k", type="integer", default=5, help="Number of clusters")
+parser$add_argument("-k", type="integer", default=5, help="Number of clusters  (optional; default value is 5)")
 
 args <- parser$parse_args()
 

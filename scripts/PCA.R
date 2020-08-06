@@ -22,7 +22,7 @@ parser <- argparse::ArgumentParser()
 
 parser$add_argument("-i", type="character", help="Input file path", required=TRUE)
 parser$add_argument("-o", type="character", help="Output folder path", required=TRUE)
-parser$add_argument("-s", type="integer", help="Start columns", default=1)
+parser$add_argument("-s", type="integer", help="Start column (optional; default value is 1)", default=1)
 
 args <- parser$parse_args()
 
