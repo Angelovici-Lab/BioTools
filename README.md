@@ -3,7 +3,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-BioTools is a repository that has many scripts to solve bio problems.
+BioTools is a repository that has many scripts which can be utilized to solve biological problems.
 
 ## Installation
 
