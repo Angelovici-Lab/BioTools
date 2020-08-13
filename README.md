@@ -61,3 +61,19 @@ This is a basic example which shows you how to use PCA script:
 cd /path/to/BioTools/scripts
 Rscript PCA.R -i 03_22_2020_Arabidopsis_1001_BAA.csv -o ../output/08_06_2020
 ```
+
+## Package Update
+
+To upgrade BioTools to the latest version, please remove the package and re-install the latest BioTools package:
+
+``` r
+# Run this inside R environment
+remove.packages("BioTools")
+devtools::install_github("Angelovici-Lab/BioTools")
+```
+
+``` r
+# Run this in your terminal
+cd /path/to/BioTools
+git pull
+```
