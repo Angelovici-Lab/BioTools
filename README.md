@@ -9,11 +9,15 @@ BioTools is a repository that has many scripts which can be utilized to solve bi
 
 You can install the BioTools from [Github](https://github.com/Angelovici-Lab/BioTools) with:
 
+``` r
+# Run this inside R environment
+install.packages("devtools", dependencies = TRUE)
+devtools::install_github("Angelovici-Lab/BioTools")
+```
 ```
 # Run this in your terminal
 git clone https://github.com/Angelovici-Lab/BioTools.git
-cd BioTools
-cd scripts
+cd BioTools/scripts
 ```
 
 ## Usage

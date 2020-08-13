@@ -1,0 +1,33 @@
+Package: BioTools
+Title: BioTools
+Version: 1.0.0
+Authors@R: 
+    person(given = "Yen On",
+           family = "Chan",
+           role = c("aut", "cre"),
+           email = "chanye@mail.missouri.edu",
+           comment = c(ORCID = "https://orcid.org/0000-0002-3345-9614"))
+Author: Yen On Chan [aut, cre]
+Maintainer: Yen On Chan <chanye@mail.missouri.edu>
+Description: BioTools is a repository that has many scripts which can be utilized to solve biological problems.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.6.0)
+Imports:
+    jpeg,
+    dplyr,
+    tidyr,
+    tibble,
+    stringr,
+    purrr,
+    tidyselect,
+    scales,
+    argparse,
+    pheatmap,
+    data.table,
+    reshape2,
+    ggforce,
+    ComplexHeatmap,
+    GGally
+RoxygenNote: 7.1.1
