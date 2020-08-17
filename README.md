@@ -62,6 +62,25 @@ cd /path/to/BioTools/scripts
 Rscript PCA.R -i 03_22_2020_Arabidopsis_1001_BAA.csv -o ../output/08_06_2020
 ```
 
+### 3) Heatmap Script
+```
+Rscript Heatmap.R [-h] -i I -o O
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -i I        Input file path
+  -o O        Output folder path
+```
+
+#### Heatmap Script Example
+
+This is a basic example which shows you how to use Heatmap script:
+
+```
+cd /path/to/BioTools/scripts
+Rscript Heatmap.R -i ../data/Hclust.csv -o ../output/08_13_2020
+```
+
 ## Package Update
 
 To upgrade BioTools to the latest version, please remove the package and re-install the latest BioTools package:
