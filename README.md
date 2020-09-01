@@ -3,7 +3,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-BioTools is a repository that has many scripts which can be utilized to solve biological problems.
+BioTools is a repository that has many tools and scripts which can be utilized to solve biological problems.
 
 ## Installation
 
@@ -17,7 +17,7 @@ devtools::install_github("Angelovici-Lab/BioTools")
 ```
 # Run this in your terminal
 git clone https://github.com/Angelovici-Lab/BioTools.git
-cd BioTools/scripts
+cd BioTools/tools
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ optional arguments:
 This is a basic example which shows you how to use Hclust script:
 
 ```
-cd /path/to/BioTools/scripts
+cd /path/to/BioTools/tools
 Rscript Hclust.R -i ../data/Hclust.csv -o ../output/07_30_2020
 ```
 
@@ -58,7 +58,7 @@ optional arguments:
 This is a basic example which shows you how to use PCA script:
 
 ```
-cd /path/to/BioTools/scripts
+cd /path/to/BioTools/tools
 Rscript PCA.R -i 03_22_2020_Arabidopsis_1001_BAA.csv -o ../output/08_06_2020
 ```
 
@@ -77,7 +77,7 @@ optional arguments:
 This is a basic example which shows you how to use Heatmap script:
 
 ```
-cd /path/to/BioTools/scripts
+cd /path/to/BioTools/tools
 Rscript Heatmap.R -i ../data/Hclust.csv -o ../output/08_13_2020
 ```
 

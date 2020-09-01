@@ -20,40 +20,35 @@ library(reshape2)
 library(ggforce)
 library(ComplexHeatmap)
 
-# Set seed
 set.seed(1)
 
 
 #######################################################################
-## Input and output (Double check or make changes)
+## Argument Parser
 #######################################################################
-# Specify input file (csv or tab delimited text file)
-input <- file.path('/home/ycth8/data/projects/BioTools/data/Hclust.csv')
 
-# Specify an output folder so that all the results can be stored into the folder
-output <- file.path("/home/ycth8/data/projects/BioTools/output/07_30_2020")
+parser <- argparse::ArgumentParser()
 
-# Number of cluster
-k <- 5
+parser$add_argument("-i", type="character", help="Input file path", required=TRUE)
+parser$add_argument("-o", type="character", help="Output folder path", required=TRUE)
+parser$add_argument("-k", type="integer", default=5, help="Number of clusters  (optional; default value is 5)")
 
+args <- parser$parse_args()
 
-#######################################################################
-## Prepare input and output
-#######################################################################
-# Check if the input file exists
-# If it is not exists, the script will ends with a warning message
+input <- args$i
+output <- args$o
+k <- args$k
+
 if(!file.exists(input)){
   print("Invalid input file. Exiting ...")
   quit(status = 0)
 }
 
-# If the output directory does not exists, it will be created.
 if(!dir.exists(output)){
   dir.create(output, recursive = TRUE)
 }
 
 ## Load data
-# the input file extension should be csv or txt
 if(endsWith(input, "csv")){
   df <- read.csv(file = input, header = TRUE)
 } else if (endsWith(input, "txt")){
@@ -63,7 +58,6 @@ if(endsWith(input, "csv")){
   quit(status = 0)
 }
 
-# Display raw data
 cat("\n Raw data: \n")
 print(head(df))
 
@@ -80,7 +74,6 @@ rownames(mat_data) <- r_names
 ## scale the data
 scaledata <- t(scale(t(mat_data)))
 
-# Show scaled data
 cat("\n Scaled data: \n")
 print(head(scaledata))
 
@@ -90,7 +83,6 @@ for (i in 2:20){
   wss[i] <- sum(kmeans(scaledata,centers=i)$withinss)
 }
 
-# Save the num_of_clusters image
 cat("\n Save image... \n")
 jpeg(file.path(output, "num_of_clusters.jpg"))
 plot(data.frame(1:length(wss), wss), type="b", xlab="Number of Clusters", ylab="Within groups sum of squares")
@@ -100,8 +92,10 @@ cat("\n")
 ## calculate distance and then do hierarchial cluster, euclidean method can be customized to other method if you like
 distance <- dist(scaledata, method = "euclidean")
 
+
 ## HClust of genes using distance, again method can be customized
 gene_hclust <- hclust(distance, method = "complete")
+
 
 ## We can use the cutree() function do this dendrogram "cutting".
 ## For example, if you want to cut it into 5 groups, you would simply do:
@@ -123,14 +117,11 @@ trans_cts_cluster <- as.data.frame(scaledata) %>%
   arrange(value) %>%
   as.data.frame()
 
-# Display scaled data and cluster value
 cat("\n Scaled data and cluster value: \n")
 print(head(trans_cts_cluster))
 
-# Save scaled data and cluster value
 write.csv(trans_cts_cluster, file.path(output, "trans_cts_cluster.csv"), row.names=FALSE)
 
-# Pivot table and join with gene information
 trans_cts_cluster_longer <- as.data.frame(scaledata) %>%
   rownames_to_column(var = colnames(df)[1]) %>%
   pivot_longer(cols = -c(colnames(df)[1]), names_to = "key", values_to = "val") %>%
@@ -139,11 +130,9 @@ trans_cts_cluster_longer <- as.data.frame(scaledata) %>%
   arrange(value) %>%
   as.data.frame()
 
-# Display scaled and pivoted data with cluster value
 cat("\n Scaled and pivoted data with cluster value: \n")
 print(head(trans_cts_cluster_longer))
 
-# Add factor into the key column
 trans_cts_cluster_longer$key <- factor(
   trans_cts_cluster_longer$key,
   levels = str_sort(unique(trans_cts_cluster_longer$key), numeric = TRUE)
@@ -156,7 +145,6 @@ p <- trans_cts_cluster_longer %>%
   geom_line(stat = "summary", fun.y = "mean", colour = "brown", size = 1.5, aes(group = 1)) +
   facet_wrap( facets = 'value')
 
-# Save cluster image
 cat("\n Save image... \n")
 ggsave(
   filename = "clusters.png",
@@ -164,7 +152,6 @@ ggsave(
   path = output
 )
 
-# Save heatmap
 cat("\n Save image... \n")
 jpeg(file.path(output, "heatmap.jpg"), width = 800, height = 800)
 Heatmap(scaledata, show_row_names = FALSE)
