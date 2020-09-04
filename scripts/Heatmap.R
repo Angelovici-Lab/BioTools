@@ -7,34 +7,37 @@ rm(list = ls())
 
 library(pheatmap)
 
-
+# Set seed
 set.seed(1)
 
 
 #######################################################################
-## Argument Parser
+## Input and output (Double check or make changes)
 #######################################################################
+# Specify input file (csv or tab delimited text file)
+input <- file.path('/home/ycth8/data/projects/BioTools/data/Hclust.csv')
 
-parser <- argparse::ArgumentParser()
+# Specify an output folder so that all the results can be stored into the folder
+output <- file.path("/home/ycth8/data/projects/BioTools/output/08_14_2020")
 
-parser$add_argument("-i", type="character", help="Input file path", required=TRUE)
-parser$add_argument("-o", type="character", help="Output folder path", required=TRUE)
 
-args <- parser$parse_args()
-
-input <- args$i
-output <- args$o
-
+#######################################################################
+## Prepare input and output
+#######################################################################
+# Check if the input file exists
+# If it is not exists, the script will ends with a warning message
 if(!file.exists(input)){
   print("Invalid input file. Exiting ...")
   quit(status = 0)
 }
 
+# If the output directory does not exists, it will be created.
 if(!dir.exists(output)){
   dir.create(output, recursive = TRUE)
 }
 
 ## Load data
+# the input file extension should be csv or txt
 if(endsWith(input, "csv")){
   df <- read.csv(file = input, header = TRUE)
 } else if (endsWith(input, "txt")){
@@ -44,23 +47,27 @@ if(endsWith(input, "csv")){
   quit(status = 0)
 }
 
-
-#######################################################################
-## Code starts here
-#######################################################################
-
-cat(rep("\n", 2))
-print(dim(df))
+# Display raw data
+cat("\n Raw data: \n")
 print(head(df))
+print(dim(df))
 
+
+#######################################################################
+## Heatmap code starts here
+#######################################################################
+
+## making the first col as row.names (convert data to martix)
 rnames_df <- df[,1]
 matrix_df <- data.matrix(df[,2:ncol(df)])
 rownames(matrix_df) <- rnames_df
 
+# Display matrix
 cat(rep("\n", 2))
-print(dim(matrix_df))
 print(head(matrix_df))
+print(dim(matrix_df))
 
+# Plot and save heatmap
 cat("\n Save image... \n")
 jpeg(file.path(output, "Heatmap.jpg"), width = 1000, height = 1200)
 pheatmap(
