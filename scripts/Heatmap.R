@@ -5,6 +5,7 @@
 #######################################################################
 rm(list = ls())
 
+library(jpeg)
 library(pheatmap)
 
 # Set seed
@@ -69,7 +70,6 @@ print(dim(matrix_df))
 
 # Plot and save heatmap
 cat("\n Save image... \n")
-jpeg(file.path(output, "Heatmap.jpg"), width = 1000, height = 1200)
 pheatmap(
   matrix_df,
   fontsize=10,
@@ -78,7 +78,9 @@ pheatmap(
   cluster_cols=TRUE,
   fontsize_row=1,
   fontsize_col=10,
-  scale="row"
+  scale="row",
+  filename=file.path(output, "Heatmap.jpg"),
+  width = 20,
+  height = 25
 )
-dev.off()
 cat("\n")

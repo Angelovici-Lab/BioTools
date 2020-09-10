@@ -8,6 +8,7 @@ rm(list = ls())
 library(jpeg)
 library(dplyr)
 library(tibble)
+library(ggplot2)
 library(argparse)
 library(GGally)
 
@@ -65,9 +66,16 @@ print(head(df))
 
 # Plot sactter plot matrix
 cat("\n Save image... \n")
-jpeg(file.path(output, "scatterplot_matrix.jpg"), width = 1000, height = 800)
-ggscatmat(df, columns = start_column:ncol(df))
-dev.off()
+p <- ggscatmat(df, columns = start_column:ncol(df))
+ggsave(
+  filename = "scatterplot_matrix.jpg",
+  plot = p,
+  path = file.path(output),
+  width = 10,
+  height = 10,
+  units = "in",
+  dpi = 300
+)
 cat("\n")
 
 #Performs a principal components analysis
