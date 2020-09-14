@@ -21,6 +21,9 @@ input <- file.path('/home/ycth8/data/projects/BioTools/data/Hclust.csv')
 # Specify an output folder so that all the results can be stored into the folder
 output <- file.path("/home/ycth8/data/projects/BioTools/output/08_14_2020")
 
+# Number of cluster
+k <- 5
+
 
 #######################################################################
 ## Prepare input and output
@@ -80,6 +83,21 @@ pheatmap(
   fontsize_col=10,
   scale="row",
   filename=file.path(output, "Heatmap.jpg"),
+  width = 20,
+  height = 25
+)
+
+pheatmap(
+  matrix_df,
+  fontsize=10,
+  color=colorRampPalette(c("blue", "yellow", "red"))(299),
+  cluster_rows=TRUE,
+  cluster_cols=TRUE,
+  cutree_rows = k,
+  fontsize_row=1,
+  fontsize_col=10,
+  scale="row",
+  filename=file.path(output, "Heatmap_with_cluster.jpg"),
   width = 20,
   height = 25
 )
