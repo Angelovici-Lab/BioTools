@@ -260,6 +260,35 @@ Heatmap(scaledata, show_row_names = FALSE)
 dev.off()
 cat("\n")
 
+
+for(i in sort(unique(gene_cluster$value))){
+  tf <- (rownames(scaledata) %in% gene_cluster$Gene[gene_cluster$value==i])
+  temp_scaledata <- data.matrix(scaledata[tf, ])
+  pheatmap(
+    temp_scaledata,
+    fontsize=10,
+    color=colorRampPalette(c("blue", "yellow", "red"))(299),
+    cluster_rows=TRUE,
+    cluster_cols=TRUE,
+    fontsize_row=1,
+    fontsize_col=10,
+    scale="row",
+    filename=file.path(
+      output,
+      paste0(
+        "Heatmap_no_cluster_plot_with_scaled_data_",
+        as.character(i),
+        "__",
+        as.character(nrow(temp_scaledata)),
+        "_rows.jpg"
+      )
+    ),
+    width = 20,
+    height = 25
+  )
+}
+
+
 # Plot and save heatmap using original data
 #cat("\n Save heatmaps plot with original data... \n")
 #pheatmap(
