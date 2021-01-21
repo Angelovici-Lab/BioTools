@@ -15,7 +15,6 @@ Encoding: UTF-8
 LazyData: true
 Depends: R (>= 3.6.0)
 biocViews:
-    ComplexHeatmap
 Imports:
     jpeg,
     dplyr,
@@ -30,5 +29,6 @@ Imports:
     data.table,
     reshape2,
     ggforce,
+    ComplexHeatmap,
     GGally
 RoxygenNote: 7.1.1
