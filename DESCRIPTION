@@ -23,6 +23,7 @@ Imports:
     stringr,
     purrr,
     tidyselect,
+    BiocManager,
     scales,
     argparse,
     pheatmap,
@@ -30,5 +31,9 @@ Imports:
     reshape2,
     ggforce,
     ComplexHeatmap,
-    GGally
+    GGally,
+    foreach,
+    iterators,
+    parallel,
+    doParallel
 RoxygenNote: 7.1.1

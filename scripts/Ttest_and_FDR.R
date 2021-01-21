@@ -5,13 +5,10 @@
 #######################################################################
 rm(list = ls())
 
-library(xlsx)
-
 library(dplyr)
 library(tidyr)
 library(tibble)
 library(stringr)
-library(foreach)
 
 # Set seed
 set.seed(1)
