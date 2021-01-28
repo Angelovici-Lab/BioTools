@@ -8,9 +8,11 @@ rm(list = ls())
 library(jpeg)
 library(dplyr)
 library(tibble)
+library(ggplot2)
 library(argparse)
 library(GGally)
 
+# Set seed
 set.seed(1)
 
 
@@ -22,7 +24,7 @@ parser <- argparse::ArgumentParser()
 
 parser$add_argument("-i", type="character", help="Input file path", required=TRUE)
 parser$add_argument("-o", type="character", help="Output folder path", required=TRUE)
-parser$add_argument("-s", type="integer", help="Start column (optional; default value is 1)", default=1)
+parser$add_argument("-s", type="integer", help="Start column index", required=TRUE)
 
 args <- parser$parse_args()
 
@@ -30,17 +32,24 @@ input <- args$i
 output <- args$o
 start_column <- args$s
 
+
+#######################################################################
+## Prepare input and output
+#######################################################################
+# Check if the input file exists
+# If it is not exists, the script will ends with a warning message
 if(!file.exists(input)){
   print("Invalid input file. Exiting ...")
   quit(status = 0)
 }
 
+# If the output directory does not exists, it will be created.
 if(!dir.exists(output)){
   dir.create(output, recursive = TRUE)
 }
 
-
 ## Load data
+# the input file extension should be csv or txt
 if(endsWith(input, "csv")){
   df <- read.csv(file = input, header = TRUE)
 } else if (endsWith(input, "txt")){
@@ -50,37 +59,67 @@ if(endsWith(input, "csv")){
   quit(status = 0)
 }
 
+# Display raw data
+cat("\n Raw data: \n")
+print(head(df))
+
 
 #######################################################################
+##
 ## PCA code starts here
+##
 #######################################################################
 
+# Plot sactter plot matrix
 cat("\n Save image... \n")
-jpeg(file.path(output, "scatterplot_matrix.jpg"), width = 1000, height = 800)
-ggscatmat(df, columns = start_column:ncol(df))
-dev.off()
+p <- ggscatmat(df, columns = start_column:ncol(df))
+ggsave(
+  filename = "scatterplot_matrix.jpg",
+  plot = p,
+  path = file.path(output),
+  width = 10,
+  height = 10,
+  units = "in",
+  dpi = 300
+)
 cat("\n")
 
-
+#Performs a principal components analysis
 pca_info <- prcomp(df[, start_column:ncol(df)], center = TRUE, scale. = TRUE)
 
+# Get the standard deviations of the principal components
 sdev <- data.frame(
   Trait = colnames(df)[start_column:ncol(df)],
   sdev = pca_info$sdev,
   stringsAsFactors = FALSE
 )
 
+# Get the matrix of variable loadings
 rotation <- as.data.frame(pca_info$rotation, stringsAsFactors = FALSE)
 rotation <- tibble::rownames_to_column(rotation, var = "Trait")
 
+# Plot PC1 vs PC2
+p <- ggplot(rotation, aes(x=PC1, y=PC2)) +
+  geom_text(label=rotation$Trait)
+
+ggsave(
+  filename="PCA_Plot.jpg",
+  plot=p,
+  path=output
+)
+
+# Get center
 center <- as.data.frame(pca_info$center, stringsAsFactors = FALSE)
 center <- tibble::rownames_to_column(center, var = "Trait")
 
+# Get scale
 scale <- as.data.frame(pca_info$scale, stringsAsFactors = FALSE)
 scale <- tibble::rownames_to_column(scale, var = "Trait")
 
+# Get PC
 PC <- data.frame(pc1 = pca_info$x[, 1], pc2 = pca_info$x[, 2], stringsAsFactors = FALSE)
 
+# Save all outputs to files
 write.csv(sdev, file.path(output, "sdev.csv"), row.names = FALSE)
 write.csv(rotation, file.path(output, "rotation.csv"), row.names = FALSE)
 write.csv(center, file.path(output, "center.csv"), row.names = FALSE)

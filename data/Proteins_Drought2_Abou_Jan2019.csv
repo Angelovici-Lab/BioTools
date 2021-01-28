@@ -1,0 +1,30 @@
+Accession,Description,6W_1,6W_2,6W_3,2W_1,2W_2,2W_3
+ATMG00510,| Symbols: NAD7 | NADH dehydrogenase subunit 7 | chrM:132071-138153 FORWARD LENGTH=394,8,8,7,7.75,8.61,12.05
+ATMG00070,| Symbols: NAD9 | NADH dehydrogenase subunit 9 | chrM:23663-24235 REVERSE LENGTH=190,7,6,5,9.47,10.33,8.61
+ATCG00670,| Symbols: CLPP1  PCLPP | plastid-encoded CLP P | chrC:69910-71882 REVERSE LENGTH=196,6,5,8,6.89,6.03,8.61
+ATCG00540,| Symbols: PETA | photosynthetic electron transfer A | chrC:61657-62619 FORWARD LENGTH=320,4,5,4,8.61,12.05,13.78
+ATCG00500,| Symbols: ACCD | acetyl-CoA carboxylase carboxyl transferase subunit beta | chrC:57075-58541 FORWARD LENGTH=488,19,22,22,40.47,34.44,31.86
+ATCG00490,| Symbols: RBCL | ribulose-bisphosphate carboxylases | chrC:54958-56397 FORWARD LENGTH=479,189,189,183,286.71,247.11,227.3
+ATCG00480,| Symbols: ATPB  PB | ATP synthase subunit beta | chrC:52660-54156 REVERSE LENGTH=498,55,60,46,98.15,111.07,109.35
+ATCG00280,| Symbols: PSBC | photosystem II reaction center protein C | chrC:33720-35141 FORWARD LENGTH=473,10,10,9,22.39,23.25,23.25
+ATCG00120,| Symbols: ATPA | ATP synthase subunit alpha | chrC:9938-11461 REVERSE LENGTH=507,34,35,32,57.69,65.44,64.58
+AT5G67630,| Symbols:  | P-loop containing nucleoside triphosphate hydrolases superfamily protein | chr5:26967535-26969306 REVERSE LENGTH=469,6,7,7,7.75,9.47,6.89
+AT5G67500,| Symbols: VDAC2  ATVDAC2 | voltage dependent anion channel 2 | chr5:26935223-26937123 FORWARD LENGTH=276,39,41,38,38.75,31.86,34.44
+AT5G67360,| Symbols: ARA12 | Subtilase family protein | chr5:26872192-26874465 REVERSE LENGTH=757,19,24,24,29.27,34.44,37.02
+AT5G66780,| Symbols:  | unknown protein; Has 1807 Blast hits to 1807 proteins in 277 species: Archae - 0; Bacteria - 0; Metazoa - 736; Fungi - 347; Plants - 385; Viruses - 0; Other Eukaryotes - 339 (source: NCBI BLink). | chr5:26663627-26664196 FORWARD...,12,16,17,19.8,19.8,18.08
+AT5G66760,| Symbols: SDH1-1 | succinate dehydrogenase 1-1 | chr5:26653776-26657224 FORWARD LENGTH=634,49,54,43,41.33,49.94,45.63
+AT5G66680,| Symbols: DGL1 | dolichyl-diphosphooligosaccharide-protein glycosyltransferase 48kDa subunit family protein | chr5:26617840-26620581 REVERSE LENGTH=437,15,12,15,17.22,17.22,22.39
+AT5G66570,| Symbols: PSBO-1  OEE1  OEE33  OE33  PSBO1  MSP-1 | PS II oxygen-evolving complex 1 | chr5:26568744-26570124 FORWARD LENGTH=332,5,8,6,7.75,6.03,7.75
+AT5G66530,| Symbols:  | Galactose mutarotase-like superfamily protein | chr5:26553821-26555575 REVERSE LENGTH=307,17,12,13,19.8,16.36,19.8
+AT5G66510,| Symbols: GAMMA CA3 | gamma carbonic anhydrase 3 | chr5:26550016-26551496 REVERSE LENGTH=258,13,9,13,11.19,9.47,11.19
+AT5G66420,| Symbols:  | LOCATED IN: cellular_component unknown; EXPRESSED IN: 23 plant structures; EXPRESSED DURING: 13 growth stages; CONTAINS InterPro DOMAIN/s: Uncharacterised conserved protein UCP033271 (InterPro:IPR008322)  TIM-barrel signal trans...,35,30,33,24.11,23.25,24.11
+AT5G66400,| Symbols: RAB18  ATDI8 | Dehydrin family protein | chr5:26518511-26519153 REVERSE LENGTH=186,147,151,157,173.06,183.39,154.98
+AT5G66190,| Symbols: ATLFNR1  FNR1 | ferredoxin-NADP(+)-oxidoreductase 1 | chr5:26451203-26453012 REVERSE LENGTH=360,25,33,27,43.91,46.49,47.36
+AT5G66140,| Symbols: PAD2 | proteasome alpha subunit D2 | chr5:26437445-26438677 REVERSE LENGTH=250,25,22,20,22.39,25.83,28.41
+AT5G66120,| Symbols:  | 3-dehydroquinate synthase  putative | chr5:26431516-26433649 REVERSE LENGTH=442,9,10,10,10.33,9.47,6.03
+AT5G66090,| Symbols:  | unknown protein; FUNCTIONS IN: molecular_function unknown; LOCATED IN: chloroplast  chloroplast stroma; EXPRESSED IN: 21 plant structures; EXPRESSED DURING: 13 growth stages; Has 30201 Blast hits to 17322 proteins in 780 species...,18,16,19,17.22,18.08,12.05
+AT5G65750,| Symbols:  | 2-oxoglutarate dehydrogenase  E1 component | chr5:26304212-26307947 FORWARD LENGTH=1025,107,115,115,99.88,121.4,98.15
+AT5G65720,| Symbols: ATNIFS1  NIFS1  NFS1  ATNFS1 | nitrogen fixation S (NIFS)-like 1 | chr5:26296349-26297710 FORWARD LENGTH=453,21,23,16,17.22,24.97,19.8
+AT5G65620,| Symbols:  | Zincin-like metalloproteases family protein | chr5:26221951-26225784 FORWARD LENGTH=791,52,58,55,73.19,75.77,61.99
+AT5G65430,| Symbols: GRF8  14-3-3KAPPA  GF14 KAPPA | general regulatory factor 8 | chr5:26148546-26150255 REVERSE LENGTH=248,33,38,34,33.58,31.86,31
+AT5G65350,| Symbols: HTR11 | histone 3 11 | chr5:26119406-26119825 REVERSE LENGTH=139,8,12,10,8.61,12.05,12.05

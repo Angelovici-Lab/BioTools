@@ -23,7 +23,7 @@ set.seed(1)
 input <- file.path("/home/ycth8/data/projects/HAPPI.GWAS/raw_data/Arabidopsis_1001/03_22_2020_Arabidopsis_1001_BAA.csv")
 
 # Specify an output folder so that all the results can be stored into the folder
-output <- file.path("/home/ycth8/data/projects/BioTools/output/08_06_2020")
+output <- file.path("/home/ycth8/data/projects/BioTools/output/07_25_2020")
 
 # Start column in the dataset where the analysis should start
 start_column <- 2
@@ -61,7 +61,9 @@ print(head(df))
 
 
 #######################################################################
+##
 ## PCA code starts here
+##
 #######################################################################
 
 # Plot sactter plot matrix
@@ -92,9 +94,21 @@ sdev <- data.frame(
 rotation <- as.data.frame(pca_info$rotation, stringsAsFactors = FALSE)
 rotation <- tibble::rownames_to_column(rotation, var = "Trait")
 
+# Plot PC1 vs PC2
+p <- ggplot(rotation, aes(x=PC1, y=PC2)) +
+  geom_text(label=rotation$Trait)
+
+ggsave(
+  filename="PCA_Plot.jpg",
+  plot=p,
+  path=output
+)
+
+# Get center
 center <- as.data.frame(pca_info$center, stringsAsFactors = FALSE)
 center <- tibble::rownames_to_column(center, var = "Trait")
 
+# Get scale
 scale <- as.data.frame(pca_info$scale, stringsAsFactors = FALSE)
 scale <- tibble::rownames_to_column(scale, var = "Trait")
 

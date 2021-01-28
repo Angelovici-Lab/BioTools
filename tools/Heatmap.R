@@ -25,11 +25,18 @@ args <- parser$parse_args()
 input <- args$i
 output <- args$o
 
+
+#######################################################################
+## Prepare input and output
+#######################################################################
+# Check if the input file exists
+# If it is not exists, the script will ends with a warning message
 if(!file.exists(input)){
   print("Invalid input file. Exiting ...")
   quit(status = 0)
 }
 
+# If the output directory does not exists, it will be created.
 if(!dir.exists(output)){
   dir.create(output, recursive = TRUE)
 }
@@ -46,21 +53,27 @@ if(endsWith(input, "csv")){
 
 
 #######################################################################
-## Code starts here
+##
+## Heatmap code starts here
+##
 #######################################################################
 
+# Show first 6 rows of the data
 cat(rep("\n", 2))
 print(dim(df))
 print(head(df))
 
+# Convert data into matrix format
 rnames_df <- df[,1]
 matrix_df <- data.matrix(df[,2:ncol(df)])
 rownames(matrix_df) <- rnames_df
 
+# Show the matrix
 cat(rep("\n", 2))
 print(dim(matrix_df))
 print(head(matrix_df))
 
+# Plot heatmap
 cat("\n Save image... \n")
 jpeg(file.path(output, "Heatmap.jpg"), width = 1000, height = 1200)
 pheatmap(

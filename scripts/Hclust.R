@@ -33,7 +33,7 @@ set.seed(1)
 input <- file.path('/home/ycth8/data/projects/BioTools/data/Hclust.csv')
 
 # Specify an output folder so that all the results can be stored into the folder
-output <- file.path("/home/ycth8/data/projects/BioTools/output/07_30_2020")
+output <- file.path("/home/ycth8/data/projects/BioTools/output/07_24_2020")
 
 # Number of cluster
 k <- 5

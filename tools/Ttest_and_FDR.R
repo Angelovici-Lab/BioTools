@@ -20,18 +20,22 @@ set.seed(1)
 
 
 #######################################################################
-## Input and output (Double check or make changes)
+## Argument Parser
 #######################################################################
-# Specify input file (csv or tab delimited text file)
-input <- file.path('/data/users/ycth8/projects/BioTools/data/Proteins_Drought2_Abou_Jan2019.csv')
 
-# Specify an output folder so that all the results can be stored into the folder
-output <- file.path("/home/ycth8/data/projects/BioTools/output/01_27_2021")
+parser <- argparse::ArgumentParser()
 
-# Number of processing cores
-cores <- ifelse(detectCores()>1, detectCores()-1, 1)
+parser$add_argument("-i", type="character", help="Input file path", required=TRUE)
+parser$add_argument("-o", type="character", help="Output folder path", required=TRUE)
+parser$add_argument("--cores", type="integer", default=1, help="Number of clusters  (optional; default value is 1)")
+parser$add_argument("--fdr_threshold", type="double", default=0.2, help="Threshold to filter FDR values")
 
-fdr_threshold <- 0.2
+args <- parser$parse_args()
+
+input <- args$i
+output <- args$o
+cores <- ifelse(args$cores < (detectCores()-1), args$cores, 1)
+fdr_threshold <- args$fdr_threshold
 
 
 #######################################################################
