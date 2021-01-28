@@ -67,18 +67,18 @@ print(head(df))
 #######################################################################
 
 # Plot sactter plot matrix
-cat("\n Save image... \n")
-p <- ggscatmat(df, columns = start_column:ncol(df))
-ggsave(
-  filename = "scatterplot_matrix.jpg",
-  plot = p,
-  path = file.path(output),
-  width = 10,
-  height = 10,
-  units = "in",
-  dpi = 300
-)
-cat("\n")
+# cat("\n Save image... \n")
+# p <- ggscatmat(df, columns = start_column:ncol(df))
+# ggsave(
+#   filename = "scatterplot_matrix.jpg",
+#   plot = p,
+#   path = file.path(output),
+#   width = 10,
+#   height = 10,
+#   units = "in",
+#   dpi = 300
+# )
+# cat("\n")
 
 #Performs a principal components analysis
 pca_info <- prcomp(df[, start_column:ncol(df)], center = TRUE, scale. = TRUE)

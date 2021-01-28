@@ -142,7 +142,7 @@ write.csv(
 #######################################################################
 df <- df %>%
   pivot_longer(!c(Accession, Description), names_to = "Group", values_to = "Measurement") %>%
-  separate(Group, c("Group", "Replicate"), extra = "drop", fill = "right") %>%
+  separate(Group, c("Group", "Replicate"), sep="(\\.\\s*(?=[^\\.]+$))|(_\\s*(?=[^_]+$))", extra = "drop", fill = "right") %>%
   as.data.frame(stringsAsFactors=FALSE)
 
 print(head(df))
