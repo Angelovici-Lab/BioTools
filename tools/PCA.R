@@ -7,6 +7,7 @@ rm(list = ls())
 
 library(jpeg)
 library(dplyr)
+library(tidyr)
 library(tibble)
 library(ggplot2)
 library(argparse)
@@ -70,19 +71,25 @@ print(head(df))
 ##
 #######################################################################
 
+# Drop all NAs
+df <- df %>% drop_na() %>% as.data.frame(stringsAsFactors=FALSE)
+
+# Drop rows with infinite sum
+df <- df[is.finite(rowSums(df[, start_column:ncol(df)])),]
+
 # Plot sactter plot matrix
-# cat("\n Save image... \n")
-# p <- ggscatmat(df, columns = start_column:ncol(df))
-# ggsave(
-#   filename = "scatterplot_matrix.jpg",
-#   plot = p,
-#   path = file.path(output),
-#   width = 10,
-#   height = 10,
-#   units = "in",
-#   dpi = 300
-# )
-# cat("\n")
+cat("\n Save image... \n")
+p <- ggscatmat(df, columns = start_column:ncol(df))
+ggsave(
+  filename = "scatterplot_matrix.jpg",
+  plot = p,
+  path = file.path(output),
+  width = 10,
+  height = 10,
+  units = "in",
+  dpi = 300
+)
+cat("\n")
 
 #Performs a principal components analysis
 pca_info <- prcomp(df[, start_column:ncol(df)], center = TRUE, scale. = TRUE)
