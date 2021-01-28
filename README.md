@@ -26,10 +26,12 @@ cd BioTools/tools
 ```
 Rscript Hclust.R [-h] -i I -o O [-k K] [--clustering_distance CLUSTERING_DISTANCE] [--clustering_method CLUSTERING_METHOD]
 
-optional arguments:
-  -h, --help                                    show this help message and exit
+mandatory arguments:
   -i I                                          Input file path
   -o O                                          Output folder path
+
+optional arguments:
+  -h, --help                                    show this help message and exit
   -k K                                          Number of clusters (optional; default value is 5)
   --clustering_distance CLUSTERING_DISTANCE     Clustering distance
   --clustering_method CLUSTERING_METHOD         Clustering method
@@ -48,11 +50,13 @@ Rscript Hclust.R -i ../data/Hclust.csv -o ../output/07_24_2020
 ```
 Rscript PCA.R [-h] -i I -o O -s S
 
-optional arguments:
-  -h, --help  show this help message and exit
+mandatory arguments:
   -i I        Input file path
   -o O        Output folder path
   -s S        Start column index
+
+optional arguments:
+  -h, --help  show this help message and exit
 ```
 
 #### PCA Script Example
@@ -68,10 +72,12 @@ Rscript PCA.R -i ../data/03_22_2020_Arabidopsis_1001_BAA.csv -o ../output/07_25_
 ```
 Rscript Heatmap.R [-h] -i I -o O
 
-optional arguments:
-  -h, --help  show this help message and exit
+mandatory arguments:
   -i I        Input file path
   -o O        Output folder path
+
+optional arguments:
+  -h, --help  show this help message and exit
 ```
 
 #### Heatmap Script Example
@@ -87,10 +93,12 @@ Rscript Heatmap.R -i ../data/Hclust.csv -o ../output/07_26_2020
 ```
 Rscript Ttest_and_FDR.R [-h] -i I -o O [--cores CORES] [--fdr_threshold FDR_THRESHOLD]
 
-optional arguments:
-  -h, --help                            show this help message and exit
+mandatory arguments:
   -i I                                  Input file path
   -o O                                  Output folder path
+
+optional arguments:
+  -h, --help                            show this help message and exit
   --cores CORES                         Number of clusters (optional; default value is 1)
   --fdr_threshold FDR_THRESHOLD         Threshold to filter FDR values
 ```
