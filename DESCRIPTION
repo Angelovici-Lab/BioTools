@@ -30,6 +30,7 @@ Imports:
     data.table,
     reshape2,
     ggforce,
+    ggfortify,
     ComplexHeatmap,
     GGally,
     foreach,
