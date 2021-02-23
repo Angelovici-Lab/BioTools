@@ -112,6 +112,32 @@ cd /path/to/BioTools/tools
 Rscript Ttest_and_FDR.R -i ../data/Maize_Drought_proteins_result.csv -o ../output/01_27_2021 --cores 10
 ```
 
+### 5) Heritability Script
+```
+Rscript Heritability.R [-h] -i I -o O -s S
+
+mandatory arguments:
+  -i I        Input file path
+  -o O        Output folder path
+  -s S        Start column index
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+#### Heritability Script Example
+
+This is a basic example which shows you how to use Heritability script:
+
+```
+cd /path/to/BioTools/tools
+
+Rscript Heritability.R \
+-i /array5/users/Angelovici_lab/GWAS_Project/Arabidopsis_1001/Outlier_removed_raw_data/03_22_2020_Arabidopsis_1001_FAA.csv \
+-o /home/ycth8/data/projects/BioTools/output/07_28_2020 \
+-s 3
+```
+
 ## Package Update
 
 To upgrade BioTools to the latest version, please remove the package and re-install the latest BioTools package:

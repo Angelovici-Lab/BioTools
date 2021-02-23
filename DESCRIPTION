@@ -36,5 +36,7 @@ Imports:
     foreach,
     iterators,
     parallel,
-    doParallel
+    doParallel,
+    nlme,
+    lme4
 RoxygenNote: 7.1.1
