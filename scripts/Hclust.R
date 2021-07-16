@@ -38,6 +38,9 @@ output <- file.path("/home/ycth8/data/projects/BioTools/output/07_24_2020")
 # Number of cluster
 k <- 5
 
+# Total number of test cluster size
+number_of_tests <- 20
+
 clustering_distance <- "euclidean"
 
 clustering_method <- "complete"
@@ -108,9 +111,15 @@ print(head(scaledata))
 
 ## finding optimum cluster
 wss <- (nrow(scaledata)-1)*sum(apply(scaledata,2,var))
-for (i in 2:20){
-  wss[i] <- sum(kmeans(scaledata,centers=i)$withinss)
+if (number_of_tests > 1) {
+  if (number_of_tests >= nrow(scaledata)) {
+    number_of_tests <- nrow(scaledata) - 1
+  }
+  for (i in 2:number_of_tests){
+    wss[i] <- sum(kmeans(scaledata,centers=i)$withinss)
+  }
 }
+
 
 # Save the num_of_clusters image
 cat("\n Save number of clusters plot... \n")

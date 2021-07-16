@@ -35,6 +35,7 @@ optional arguments:
   -k K                                          Number of clusters (optional; default value is 5)
   --clustering_distance CLUSTERING_DISTANCE     Clustering distance
   --clustering_method CLUSTERING_METHOD         Clustering method
+  --number_of_tests NUMBER_OF_TESTS             Total number of test cluster size
 ```
 
 #### Hclust Script Example

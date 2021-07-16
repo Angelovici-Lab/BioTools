@@ -37,6 +37,7 @@ parser$add_argument("-o", type="character", help="Output folder path", required=
 parser$add_argument("-k", type="integer", default=5, help="Number of clusters  (optional; default value is 5)")
 parser$add_argument("--clustering_distance", type="character", default="euclidean", help="Clustering distance")
 parser$add_argument("--clustering_method", type="character", default="complete", help="Clustering method")
+parser$add_argument("--number_of_tests", type="integer", default=10, help="Total number of test cluster size")
 
 args <- parser$parse_args()
 
@@ -45,6 +46,7 @@ output <- args$o
 k <- args$k
 clustering_distance <- args$clustering_distance
 clustering_method <- args$clustering_method
+number_of_tests <- args$number_of_tests
 
 
 #######################################################################
@@ -112,8 +114,13 @@ print(head(scaledata))
 
 ## finding optimum cluster
 wss <- (nrow(scaledata)-1)*sum(apply(scaledata,2,var))
-for (i in 2:20){
-  wss[i] <- sum(kmeans(scaledata,centers=i)$withinss)
+if (number_of_tests > 1) {
+  if (number_of_tests >= nrow(scaledata)) {
+    number_of_tests <- nrow(scaledata) - 1
+  }
+  for (i in 2:number_of_tests){
+    wss[i] <- sum(kmeans(scaledata,centers=i)$withinss)
+  }
 }
 
 # Save the num_of_clusters image
